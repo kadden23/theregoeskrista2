@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Krista Adden - Web Designer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="fullPage full-screen backgrounds." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,backgrounds,full-screen" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="fullpage.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+   
+    </head>
+<style>
+.filterDiv {
+  float: left;
+  background-color: white;
+  color: #38495a;
+    width: 300px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+    align-content: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+
+}
+
+.show {
+  display: block;
+}
+
+.container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+    
+img {
+    
+     max-width:100%;
+max-height:100%;
+    }
+    
+@media only screen and (max-width: 480px) {
+    .filterDiv{
+      width: 90%;
+    }
+        
+   .wrapper {
+        padding-left:20px;
+        padding-right: 20px;
+    } 
+    
+}
+   
+
+</style>
+<body>
+
+<div class="wrapper">
+<div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('website')"> Website Design</button>
+    <button class="btn" onclick="filterSelection('graphic')"> Graphic Design</button>
+    <button class="btn" onclick="filterSelection('modeling')"> 3D Modeling</button>
+    <button class="btn" onclick="filterSelection('video')"> Videography</button>
+    <button class="btn" onclick="filterSelection('photo')"> Photography</button>
+</div>
+
+<div class="container">
+    <div class = "span_12_of_12">
+        <div class="filterDiv span_3_of_12 website"><img src="images/equestrianteam.png"></div>
+        <div class="filterDiv span_3_of_12 website"><img src="images/sidneyglass.png"></div>
+        <div class="filterDiv span_3_of_12 graphic"><img src="images/ruckusflag.png"></div>
+
+        <div class="filterDiv span_3_of_12 graphic"><img src="images/equestrianteamlogo.png"></div>
+        <div class="filterDiv span_3_of_12 modeling"><img src="images/shieldmodel.png"></div>
+        <div class="filterDiv span_3_of_12 modeling"><img src="images/sword.png"></div>
+  
+        <div class="filterDiv span_3_of_12 graphic"><img src="images/snowcappedlogo.png"></div>
+        <div class="filterDiv span_3_of_12 graphic"><img src="images/hsteamlogo.png"></div>
+    </div>
+</div>
+
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+    </div>
+</body>
+</html>
+
+
